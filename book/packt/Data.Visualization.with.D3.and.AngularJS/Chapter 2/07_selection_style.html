@@ -1,0 +1,17 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  </head> 
+  <body> 
+	<p>Apple, Banana and Orange</p>
+
+	<script type="text/javascript">
+	  // Set the CSS style
+	  d3.select('p').style('color', 'red');
+	  d3.select('p').style({'font-size': 14, 'font-weigth': 'bold'});
+	  // Get the CSS style
+	  console.log(d3.select('p').style('color'));
+	  // 'rgb(255, 0, 0)'
+	</script>
+  </body> 
+</html>

@@ -1,0 +1,34 @@
+<html ng-app="myApp">
+  <head>
+	
+	<script src="libs/angular.min.js"></script>
+
+	<script type="text/javascript">
+
+	  var app = angular.module('myApp', []);
+
+	  app.factory('myService', ['$http',
+	  	function($http){
+	  		return $http;
+	    }
+	  ]);
+
+	  // This example will throw a XMLHttpRequest error
+	  // because you are trying to load the JSON file
+	  // from the local file system (Cross origin request)
+	  // We will later use a static web server (http-server)
+	  // serve files properly on the local machine
+
+	  app.controller('MainCtrl', ['$scope', 'myService', 
+	  	function($scope, myService) {    
+	    	myService.get('files/data.json').then(function(data){
+	    		$scope.data = data;
+	    	});
+	    }
+	  ]);
+	</script>
+  </head>
+  <body ng-controller="MainCtrl">
+  	
+  </body>
+</html>

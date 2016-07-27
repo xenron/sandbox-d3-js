@@ -1,0 +1,14 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  </head> 
+  <body> 
+
+    <script type="text/javascript">
+      var url = "files/access.log";
+      var xhr = d3.xhr(url, function(response){
+        console.log(response.responseText);
+      });
+    </script>
+  </body> 
+</html>

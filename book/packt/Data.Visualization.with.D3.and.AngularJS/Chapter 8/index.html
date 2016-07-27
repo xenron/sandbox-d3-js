@@ -1,0 +1,47 @@
+<html ng-app="myApp"> 
+  <head> 
+    <!-- Include 3rd party libraries -->
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script>
+    <script src="bower_components/angular/angular.js" charset="UTF-8"></script>
+
+    <!-- Include the application files -->
+    <script src="src/app.js"></script>
+    <link href="src/app.css" rel="stylesheet">
+    
+    <!-- Include Bootstrap -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Include the files of the chart component -->
+    <script src="src/chart.js"></script>
+    <link href="src/chart.css" rel="stylesheet">
+
+  </head>
+  <body> 
+    
+    <div class="container">
+
+      <div ng-controller="MainCtrl">
+
+        <div>
+          <my-brush-chart class="chart blue" data="log.data" brush="display.date"></my-brush-chart>
+        </div>
+
+        <div>
+          <span>Cursor:</span>
+          <span>
+            {{ display.cursor[0] | date : 'dd.MM.yyyy HH:mm' }}
+          </span> 
+          <span>
+            {{ display.cursor[1] | number:2 }}
+          </span>
+        </div>
+
+        <my-line-chart class="chart blue" data="log.data" cursor="display.cursor">
+        </my-line-chart>
+        
+        <my-bar-chart class="chart blue" data="log.data" cursor="display.cursor" start-date="display.date[0]" end-date="display.date[1]">
+        </my-bar-chart>
+      </div>
+    </div>
+  </body> 
+</html>

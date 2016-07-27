@@ -1,0 +1,72 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  
+    <style type="text/css">
+
+    circle.frame {
+      stroke: black;
+      stroke-width: 1;
+      stroke-opacity: 1.0;
+      fill: rgb(0,0,255);
+      fill-opacity: 0.196;
+    }
+
+    </style>
+
+  </head> 
+  <body>
+
+    <script type="text/javascript"> 
+      
+      var svg = d3.select("body").append("svg")
+        .attr("width", 800)
+        .attr("height", 400);
+
+      var circle = svg.append("circle")
+        .attr("class", "frame")
+        .attr("cx", 50)
+        .attr("cy", 50)
+        .attr("r", 25);
+
+      var tickFn = function(elapsed){
+
+        // Frame 0
+        if (elapsed <= 100) {
+          circle.style("fill", "rgb(0,0,255)");
+        }
+        
+        // Frame 1
+        else if (elapsed <= 200) {
+          circle.style("fill", "rgb(50,0,200)");
+        }
+
+        // Frame 2
+        else if (elapsed <= 300) {
+          circle.style("fill", "rgb(75,0,150)");
+        }
+
+        // Frame 3
+        else if (elapsed <= 400) {
+          circle.style("fill", "rgb(150,0,75)");
+        }
+
+        // Frame 4
+        else if (elapsed <= 500) {
+          circle.style("fill", "rgb(200,0,50)");
+        }
+
+        // Frame 5
+        else {
+          circle.style("fill", "rgb(255,0,0)");
+          
+          /* End Timer */
+          return true;
+        }
+      }
+
+      d3.timer(tickFn);
+
+    </script>
+  </body> 
+</html>

@@ -1,0 +1,136 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  
+    <style type="text/css">
+    path {
+      stroke: steelblue;
+      stroke-width: 2;
+      fill: none;
+    }
+    </style>
+
+  </head> 
+  <body>
+
+    <script type="text/javascript"> 
+      
+      var svg = d3.select("body").append("svg")
+        .attr("width", 800)
+        .attr("height", 400);
+
+      var g = svg.append("g");
+   
+      var decasteljau = function(data, t) {    
+        /* Create an array */
+        var result = [data];
+    
+        while (data.length > 1) {
+          /* Get the interpolated subset */
+          data = data.slice(0,data.length - 1).map(function(p, i) {
+            /* Interpolate current point with next point */
+            return d3.interpolate(data[i], data[i+1])(t);
+          });
+          /* Push the current dataset to the results */
+          result.push(data);
+        }
+        return result;
+      }
+
+      var points =[[15,15], [200, 300], [400,100]];
+      var t = 0.9;
+      var dc_points = decasteljau(points, t);
+
+      g.selectAll("circle.control")
+        .data(points)
+        .enter()
+        .append("circle")
+        .attr("class", 'control')
+        .style("fill", 'red')
+        .attr("cx", function(d) {return d[0]; })
+        .attr("cy", function(d) {return d[1]; })
+        .attr("r", 3);
+
+      var line = d3.svg.line();
+
+      g.append("path")
+        .datum(points)
+        .attr("d", line)
+        .style("stroke", 'red')
+        .style("fill", 'none');
+
+      /* First step */
+
+      // var p0_0 = d3.interpolate(points[0], points[1])(t);
+      // var p0_1 = d3.interpolate(points[1], points[2])(t);
+
+      // var p0 = [p0_0, p0_1];
+
+      // g.selectAll("circle.points0")
+      //   .data(dc_points[1])
+      //   .enter()
+      //   .append("circle")
+      //   .attr("class", 'points0')
+      //   .style("fill", 'red')
+      //   .attr("cx", function(d) {return d[0]; })
+      //   .attr("cy", function(d) {return d[1]; })
+      //   .attr("r", 3);
+
+      // g.append("path")
+      //   .datum(dc_points[1])
+      //   .attr("d", line)
+      //   .style("stroke", 'orange')
+      //   .style("fill", 'none');
+
+      /* Second step */
+
+      // var p1_0 = d3.interpolate(p0_0, p0_1)(t);
+
+
+      // g.selectAll("circle.points1")
+      //   .data(dc_points[2])
+      //   .enter()
+      //   .append("circle")
+      //   .attr("class", 'points1')
+      //   .style("fill", 'orange')
+      //   .attr("cx", function(d) {return d[0]; })
+      //   .attr("cy", function(d) {return d[1]; })
+      //   .attr("r", 3);
+
+
+      /* Draw the curve */
+
+      g.selectAll("circle.points")
+        .data([points[0], points[points.length-1]])
+        .enter()
+        .append("circle")
+        .attr("class", 'points')
+        .style("fill", 'steelblue')
+        .attr("cx", function(d) {return d[0]; })
+        .attr("cy", function(d) {return d[1]; })
+        .attr("r", 3);
+
+      g.selectAll("text.control")
+        .data(points.slice(1,points.length-1))
+        .enter()
+        .append("text")
+        .attr("x", function(d) {return d[0] + 5; })
+        .attr("y", function(d) {return d[1] + 5; })
+        .text(function(d, i) {return "C" + (i+1);})
+        .style("fill", 'red');
+
+      g.selectAll("text.points")
+        .data([points[0], points[points.length-1]])
+        .enter()
+        .append("text")
+        .attr("x", function(d) {return d[0] + 5; })
+        .attr("y", function(d) {return d[1] + 5; })
+        .text(function(d, i) {return "P" + (i+1);})
+        .style("fill", 'steelblue');
+
+      var quadratic = svg.append("path")
+        .attr("d", 'M15,15  Q200,300 400,100');
+
+    </script>
+  </body> 
+</html>

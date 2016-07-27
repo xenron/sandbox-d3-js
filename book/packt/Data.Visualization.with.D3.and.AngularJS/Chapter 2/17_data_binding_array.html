@@ -1,0 +1,24 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  </head> 
+  <body> 
+	<svg width="400" height="200">
+	  <circle cx="50" cy="50" r="40" />
+	  <circle cx="150" cy="50" r="40" />
+	  <circle cx="250" cy="50" r="40" />
+	  <circle cx="350" cy="50" r="40" />
+	</svg>
+
+	<script type="text/javascript">
+	  // Create a data array  
+	  var data = [10, 20, 30, 40];
+	  
+	  // Bind data array to the Selection
+	  var circles = d3.selectAll('circle').data(data);
+
+	  console.log(circles.data());
+	  // [10, 20, 30, 40]
+	</script>
+  </body> 
+</html>

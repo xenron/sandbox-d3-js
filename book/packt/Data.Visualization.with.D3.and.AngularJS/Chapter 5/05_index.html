@@ -1,0 +1,44 @@
+<html ng-app="myApp"> 
+  <head> 
+    <!-- Include 3rd party libraries -->
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script>
+    <script src="bower_components/angular/angular.js" charset="UTF-8"></script>
+
+    <!-- Include the application files -->
+    <link href="src/app.css" rel="stylesheet">
+
+    <!-- Include the files of the chart component -->
+    <script src="src/chart.js"></script>
+    <link href="src/chart.css" rel="stylesheet">
+
+    <script>
+
+      /* src/app.js */
+      // Application Module 
+      angular.module('myApp', ['myChart'])
+
+      // Main application controller
+      .controller('MainCtrl', ["$scope", "SimpleD3Loader",
+        function ($scope, SimpleD3Loader) {
+          
+          $scope.log = {
+            src: 'files/access.log',
+            data: ''
+          };
+
+          SimpleD3Loader($scope.log.src, function(data){
+            $scope.log.data = data;
+            $scope.$digest();
+          });
+      }]);
+
+    </script>
+
+  </head>
+  <body>
+    <div ng-controller="MainCtrl">
+      <h3>{{ log.src }}</h3>
+      <p>{{ log.data }}</p>
+    </div>
+  </body> 
+</html>

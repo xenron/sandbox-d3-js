@@ -1,0 +1,33 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  </head> 
+  <body> 
+    <svg width="800" height="500"></svg>
+    
+    <script type="text/javascript">
+      // Get a Selection of the svg element
+      var svg = d3.select('svg');
+      // Get an empty Selection of all circle elements
+      // and bind a data array to the selection
+      var circles = svg.selectAll('circles').data([10, 20, 30]);
+      
+      // Get the enter Selection and append circle elements
+      circles.enter()
+        .append('circle');
+      
+      // The circle elements have been merged to the Selection
+      circles
+        .attr('cx', function(d, i) { return (i+1)*100; })
+        .attr('cy', 50)
+        .attr('r', function(d) { return d; });
+      
+      // Remove an element from the bound data
+      circles
+        .data([10, 20])
+        .exit()
+        // Remove elements that are deleted from the bound data
+        .remove();
+    </script>
+  </body> 
+</html>

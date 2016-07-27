@@ -1,0 +1,68 @@
+<html ng-app="myApp"> 
+  <head> 
+    <!-- Include 3rd party libraries -->
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script>
+    <script src="bower_components/angular/angular.js" charset="UTF-8"></script>
+
+    <!-- Include the application files -->
+    <link href="src/app.css" rel="stylesheet">
+
+    <!-- Include the files of the chart component -->
+    <script src="src/chart.js"></script>
+    <link href="src/chart.css" rel="stylesheet">
+
+    <script>
+
+      /* src/app.js */
+      // Application Module 
+      angular.module('myApp', ['myChart'])
+
+      // Main application controller
+      .controller('MainCtrl', ["$scope", "SimpleHttpLoader", "StringParser",
+        function ($scope, SimpleHttpLoader, StringParser) {
+          
+          var formatter = d3.time.format("%d/%b/%Y:%H:%M:%S %Z");
+
+          $scope.log = {
+            src: 'files/access.log',
+            data: ''
+          };
+
+          SimpleHttpLoader($scope.log.src)
+            .then(function(response){
+              // Response
+              var responseDataStr = response.data;
+
+              // Parse string to an array of datum arrays
+              var parsed = StringParser(responseDataStr);
+
+               // Map each datum array to object
+              var mapped = parsed.map(function(d) {
+                return {
+                  time: formatter.parse(d[2]),
+                  ip: d[0],
+                  request: d[3],
+                  status: d[4],
+                  agent: d[8]
+                };
+              });
+
+              $scope.log.data = mapped;
+          });
+      }]);
+
+    </script>
+
+  </head>
+  <body>
+    <div ng-controller="MainCtrl">
+      <h3>{{ log.src }}</h3>
+      <div ng-repeat="l in log.data">
+        <span>Date: {{ l.time }}</span>
+        <span>IP: {{ l.ip }}</span>
+        <span>Request: {{ l.request }}</span>
+        <hr>
+      </div>
+    </div>
+  </body> 
+</html>

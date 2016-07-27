@@ -1,0 +1,24 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  </head> 
+  <body> 
+    <script type="text/javascript">
+
+        var data = [
+          {name: 'Ben', age: 27},
+          {name: 'Flo', age: 22},
+          {name: 'Phil', age: 28},
+          {name: 'Chris', age: 26}
+        ];
+
+        var mapped = data.map(function(d){
+          return d.name;
+        });
+
+        console.log(mapped);
+        // ["Ben", "Flo", "Phil", "Chris"]
+
+    </script>
+  </body> 
+</html>

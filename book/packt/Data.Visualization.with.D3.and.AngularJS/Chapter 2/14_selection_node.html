@@ -1,0 +1,21 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  </head> 
+  <body> 
+    <form></form>
+
+	<script type="text/javascript">
+	  // document is the global root DOM element
+	  console.log(document);
+	  // #document
+	  // doc is now a Selection
+	  var doc = d3.select(document);
+
+	  // Get a DOM Element
+	  var dom_elem = document.getElementsByTagName('form')[0];
+	  // elem is now a Selection
+	  var elem = d3.select(dom_elem);
+	</script>
+  </body> 
+</html>

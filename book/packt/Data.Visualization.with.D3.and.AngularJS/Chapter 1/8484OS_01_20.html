@@ -1,0 +1,54 @@
+<html ng-app="myApp">
+  <head>
+  
+  <script src="libs/angular.min.js"></script>
+
+    <script type="text/javascript">
+
+      var app = angular.module('myApp', []);
+
+      app.directive('d3LineChart', function(){
+        return {
+          restrict: 'E',
+          scope: {
+            data: '@'
+          },
+          template: 'D3 Line Plot'
+        }
+      });
+
+      app.directive('d3ScatterPlot', function(){
+        return {
+          restrict: 'E',
+          scope: {
+            data: '@'
+          },
+          template: 'D3 Scatter Plot'
+        }
+      });
+
+    	app.filter('startDate', function(){ 
+        return function(input, args){
+          return input.filter(function() {
+            return true;
+          });
+        };
+      });
+
+      app.controller('MainCtrl', ['$scope', 
+        function($scope) {    
+
+          $scope.timeData = [
+            { start: new Date() },
+            { start: new Date() }
+          ];
+        }
+      ]);
+
+  	</script>
+  </head>
+  <body ng-controller="MainCtrl">
+    <d3-line-chart data="timeData | startDate:'01.01.2015'"></d3-line-chart>
+    <d3-scatter-plot data="timeData | startDate:'01.01.2015'"></d3-scatter-plot>
+  </body>
+</html>

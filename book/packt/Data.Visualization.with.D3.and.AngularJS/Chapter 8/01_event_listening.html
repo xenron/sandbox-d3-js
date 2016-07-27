@@ -1,0 +1,46 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  
+    <style type="text/css">
+
+    circle {
+      stroke: steelblue;
+      stroke-width: 1;
+      stroke-opacity: 1.0;
+      fill: steelblue;
+      fill-opacity: 0.4;
+    }
+
+    </style>
+
+  </head> 
+  <body>
+
+    <script type="text/javascript"> 
+      
+      var svg = d3.select("body").append("svg")
+        .attr("width", 800)
+        .attr("height", 400);
+
+      var circle = svg.append("circle")
+        .attr("cx", 100)
+        .attr("cy", 100)
+        .attr("r", 50);
+
+      var events = [
+        'click', 'dblclick', 
+        'mouseover', 'mouseenter', 'mouseleave', 
+        'mousemove', 'mousedown', 'mouseup'
+      ];
+     
+      events.map(function(e){
+        circle.on(e, function(){
+
+          console.log("Triggered", d3.event.type);
+        });
+      });
+
+    </script>
+  </body> 
+</html>

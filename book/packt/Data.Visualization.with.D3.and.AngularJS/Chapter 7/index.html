@@ -1,0 +1,32 @@
+<html ng-app="myApp"> 
+  <head> 
+    <!-- Include 3rd party libraries -->
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script>
+    <script src="bower_components/angular/angular.js" charset="UTF-8"></script>
+
+    <!-- Include the application files -->
+    <script src="src/app.js"></script>
+    <link href="src/app.css" rel="stylesheet">
+
+    <!-- Include Bootstrap -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Include the files of the chart component -->
+    <script src="src/chart.js"></script>
+    <link href="src/chart.css" rel="stylesheet">
+
+  </head>
+  <body> 
+    
+    <div class="container">
+
+      <div ng-controller="MainCtrl">
+
+          <my-line-chart class="chart blue" data="log.data"></my-line-chart>
+
+          <my-bar-chart class="chart blue" data="log.data"></my-bar-chart>
+
+      </div>
+    </div>
+  </body> 
+</html>

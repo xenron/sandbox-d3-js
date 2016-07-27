@@ -1,0 +1,46 @@
+.axis path, .axis line {
+    fill: none;
+    stroke: #999;
+    shape-rendering: crispEdges;
+}
+
+.grid path, .grid line {
+	fill: none;
+    stroke: lightgrey;
+    opacity: 0.7;
+    shape-rendering: crispEdges;
+}
+
+.tick {
+	font: 10px sans-serif;
+}
+
+.blue .data-point {
+	fill: steelblue;
+}
+
+.blue .data-line {
+	fill: none;
+	stroke:steelblue;
+	stroke-width: 1;
+}
+
+.blue .data-area {
+	fill: steelblue;
+	fill-opacity:0.3;
+	stroke: none;
+}
+
+.data-star {
+	fill: red;
+	fill-opacity:0.4;
+	stroke: red;
+	stroke-width: 1;
+}
+
+.blue .data-bar {
+	fill: steelblue;
+	fill-opacity:0.3;
+	stroke: steelblue;
+	stroke-width: 1;
+}

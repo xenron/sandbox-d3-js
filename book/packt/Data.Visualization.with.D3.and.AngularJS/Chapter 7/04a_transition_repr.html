@@ -1,0 +1,36 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  
+    <style type="text/css">
+
+    path {
+      fill: steelblue;
+    }
+
+    </style>
+
+  </head> 
+  <body>
+
+    <script type="text/javascript"> 
+      
+      var svg = d3.select("body").append("svg")
+        .attr("width", 800)
+        .attr("height", 400);
+
+      var path1 = "M11.166,23.963L22.359,17.5c1.43-0.824,1.43-2.175,0-3L11.166,8.037c-1.429-0.826-2.598-0.15-2.598,1.5v12.926C8.568,24.113,9.737,24.789,11.166,23.963z";
+      var path2 = "M23.963,20.834L17.5,9.64c-0.825-1.429-2.175-1.429-3,0L8.037,20.834c-0.825,1.429-0.15,2.598,1.5,2.598h12.926C24.113,23.432,24.788,22.263,23.963,20.834z";
+
+      d3.select("body").select("svg")
+        .append("path")
+        .attr("d", path1)
+
+        .transition()
+        .delay(1000)
+        .duration(5000)
+        .attr("d", path2);
+
+    </script>
+  </body> 
+</html>

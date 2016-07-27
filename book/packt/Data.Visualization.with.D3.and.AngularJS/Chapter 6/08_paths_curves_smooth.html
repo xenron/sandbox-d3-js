@@ -1,0 +1,30 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  
+    <style type="text/css">
+    path {
+      stroke: steelblue;
+      stroke-width: 2;
+      fill: none;
+    }
+    </style>
+
+  </head> 
+  <body>
+
+    <script type="text/javascript"> 
+      
+      var svg = d3.select("body").append("svg")
+        .attr("width", 800)
+        .attr("height", 400);
+
+      var quadratic1 = svg.append("path")
+        .attr("d", 'M15,15  Q200,300 400,100 Q500,50 800,100');
+
+      var quadratic2 = svg.append("path")
+        .attr("d", 'M15,215  Q200,500 400,300 T800,300');
+
+    </script>
+  </body> 
+</html>

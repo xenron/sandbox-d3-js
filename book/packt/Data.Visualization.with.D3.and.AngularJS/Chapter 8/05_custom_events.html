@@ -1,0 +1,21 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+
+  </head> 
+  <body>
+
+    <script type="text/javascript"> 
+      
+      var dispatch = d3.dispatch("customevent");
+
+      dispatch.on("customevent", function(args){
+
+        console.log("Custom event called with", args);
+      });
+
+      dispatch.customevent('some args');
+
+    </script>
+  </body> 
+</html>

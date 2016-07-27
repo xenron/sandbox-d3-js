@@ -1,0 +1,37 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+
+    <style>
+      svg {
+        position: relative;
+      }
+    </style>
+
+  </head> 
+  <body>
+
+    <script type="text/javascript"> 
+      
+      var svg = d3.select("body").append("svg")
+        .attr("width", 800)
+        .attr("height", 400);
+
+      svg.on('click', function(){
+
+        var e = d3.event;
+        var xpos = (e.offsetX==undefined) ? e.layerX : e.offsetX;
+        var ypos = (e.offsetY==undefined) ? e.layerY : e.offsetY;
+
+        svg.append("circle")
+          .attr("cx", xpos)
+          .attr("cy", ypos)
+          .style("fill", "steelblue")
+          .attr("r", 50);
+      });
+
+
+
+    </script>
+  </body> 
+</html>

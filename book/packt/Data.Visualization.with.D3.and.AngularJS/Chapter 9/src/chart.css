@@ -1,0 +1,70 @@
+.axis path, .axis line {
+    fill: none;
+    stroke: #999;
+    shape-rendering: crispEdges;
+}
+
+.grid path, .grid line {
+	fill: none;
+    stroke: lightgrey;
+    opacity: 0.7;
+    shape-rendering: crispEdges;
+}
+
+.tick {
+	font: 10px sans-serif;
+}
+
+.cursor text, .focus text {
+	text-anchor: end;
+	font-size: 10px;
+	font-weight: bold;
+	fill: black;
+}
+
+.brush .extent {
+    stroke: rgba(255, 185, 88, 0.9);
+    fill-opacity: .125;
+    shape-rendering: crispEdges;
+}
+
+.label path {
+	fill: rgba(255, 185, 88, 0.9);
+	stroke: none;
+}
+
+.blue .data-point {
+	fill: steelblue;
+}
+
+.blue .data-point-active {
+	fill: red;
+	stroke: white;
+	stroke-width: 1;
+}
+
+.blue .data-line, .blue .data-line-update {
+	fill: none;
+	stroke:steelblue;
+	stroke-width: 2;
+}
+
+.blue .data-area, .blue .data-area-update {
+	fill: steelblue;
+	fill-opacity:0.3;
+	stroke: none;
+}
+
+.data-star {
+	fill: red;
+	fill-opacity:0.4;
+	stroke: red;
+	stroke-width: 1;
+}
+
+.blue .data-bar {
+	fill: steelblue;
+	fill-opacity:0.3;
+	stroke: steelblue;
+	stroke-width: 1;
+}

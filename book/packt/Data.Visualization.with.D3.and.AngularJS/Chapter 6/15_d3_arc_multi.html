@@ -1,0 +1,40 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  
+    <style type="text/css">
+    path {
+      stroke: steelblue;
+      stroke-width: 2;
+      fill: steelblue;
+      fill-opacity: 0.3;
+    }
+    </style>
+
+  </head> 
+  <body>
+
+    <script type="text/javascript"> 
+      
+      var svg = d3.select("body").append("svg")
+        .attr("width", 800)
+        .attr("height", 400);
+
+      var points =[[0,15,'red'], [20, 90,'green'], [110,180,'orange']];
+
+      var arc = d3.svg.arc()
+        .innerRadius(40)
+        .outerRadius(100)
+        .startAngle(function(d){return d[0] * Math.PI/180;})
+        .endAngle(function(d){return d[1] * Math.PI/180;});
+
+      var shape1 = svg.selectAll("path")
+        .data(points)
+        .enter().append("path")
+        .attr("d", arc)
+        .style("fill", function(d) { return d[2]; })
+        .attr("transform", 'translate(200,200)');
+
+    </script>
+  </body> 
+</html>

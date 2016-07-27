@@ -1,0 +1,44 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  
+    <style type="text/css">
+
+    circle.frame {
+      stroke: black;
+      stroke-width: 1;
+      stroke-opacity: 1.0;
+      fill: rgb(0,0,255);
+      fill-opacity: 0.196;
+    }
+
+    </style>
+
+  </head> 
+  <body>
+
+    <script type="text/javascript"> 
+      
+      var svg = d3.select("body").append("svg")
+        .attr("width", 800)
+        .attr("height", 400);
+
+      var circle = svg.append("circle")
+        .attr("class", "frame")
+        .attr("cx", 50)
+        .attr("cy", 50)
+        .attr("r", 25);
+
+      var blue =  d3.rgb(0,0,255);
+      var red = d3.rgb(255,0,0);
+      var duration = 500;
+
+      circle
+        .style("fill", blue)
+        .transition()
+        .duration(duration)
+        .style("fill", red);
+
+    </script>
+  </body> 
+</html>

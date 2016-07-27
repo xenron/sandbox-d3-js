@@ -1,0 +1,19 @@
+<html>
+	<head>
+		<script src="libs/raphael.min.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+		  // Define the dataset
+		  var data = [15, 25, 35];
+		  // Draw the canvas
+		  var paper = Raphael(0, 0, 50, 30); 
+		  // Draw and color the circles
+		  for (var i = 0; i < 3; i ++) {
+		    var circle = paper.circle(data[i], 15, 5); 
+		    circle.attr('fill', 'red');
+		  }
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,171 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  
+    <style type="text/css">
+
+    circle.frame {
+      stroke: steelblue;
+      stroke-width: 2;
+      stroke-opacity: 0.75;
+      fill: steelblue;
+      fill-opacity: 0.5;
+    }
+
+    line.frame, path.frame {
+      stroke: black;
+      stroke-width: 1.0;
+      stroke-opacity: 0.9;
+      fill: none;
+      shape-rendering: crispEdges;
+    }
+
+    line.time {
+      stroke: black;
+      stroke-width: 1.0;
+      stroke-opacity: 0.9;
+      shape-rendering: crispEdges;
+    }
+
+    text.time {
+      text-anchor: middle;
+      fill: black;
+      fill-opacity: 0.9;
+      shape-rendering: crispEdges;
+    }
+
+    text.caption {
+      text-anchor: left;
+      fill: black;
+      fill-opacity: 0.9;
+      shape-rendering: crispEdges;
+    }
+
+    text.caption-frame {
+      text-anchor: left;
+      fill: black;
+      fill-opacity: 0.9;
+      shape-rendering: crispEdges;
+      font-size: 10px;
+    }
+
+    line.time-grid {
+      stroke: black;
+      stroke-width: 1.0;
+      stroke-opacity: 0.2;
+      shape-rendering: crispEdges;
+    }
+
+
+    </style>
+
+  </head> 
+  <body>
+
+    <script type="text/javascript"> 
+      
+      var width = 800;
+      var height = 400;
+
+      var svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+      var positions = [];
+      var markers = [];
+      var s = 30;
+      var w = 650;
+      var h = 130;
+      var l = 35;
+      var t = 60;
+
+      var ease = d3.ease('bounce');
+      var position_steps = 5;
+
+      for (var i = 0; i <= position_steps; i++) {
+        positions.push(ease(i/position_steps));
+      }
+
+      var marker_steps = 10;
+
+      for (var i = 0; i <= marker_steps; i++) {
+        markers.push(i/marker_steps);
+      }
+
+      /* Draw x-axis */
+      svg.append("line")
+        .attr("class", "time")
+        .attr("x1", l - s)
+        .attr("y1", h - 10.0)
+        .attr("x2", l+w + s*2)
+        .attr("y2", h - 10.0);
+
+      /* Draw caret */
+      svg.append("path")
+        .attr("class", "caret")
+        .attr("d", "M-5,-6 l10,0 -5,12z")
+        .attr("transform","translate("+(l+w + s*2)+","+(h - 10.0+1.0)+") rotate(-90) scale(0.75)");
+
+      /* Draw grid */
+      svg.selectAll("line.time-grid")
+        .data(markers)
+        .enter()
+        .append("line")
+        .attr("class", "time-grid")
+        .attr("stroke-dasharray", "5,5")
+        .attr("x1", function(d) { return l+d*w; })
+        .attr("y1", 0.0)
+        .attr("x2", function(d) { return l+d*w; })
+        .attr("y2", h);
+
+      /* Draw grid caption */
+      svg.selectAll("text.time")
+        .data(markers)
+        .enter()
+        .append("text")
+        .attr("class", "time")
+        .attr("x", function(d) { return l+d*w; })
+        .attr("y", h + 14.0)
+        .text(function(d) { return d3.format('.1f')(d); });
+
+      svg.append("text")
+        .attr("class", "caption")
+        .attr("x", l+w + s)
+        .attr("y", h + 14.0)
+        .text("position");
+
+      /* Draw line frame */
+      svg.selectAll("line.frame")
+        .data(positions)
+        .enter()
+        .append("line")
+        .attr("class", "frame")
+        .attr("x1", function(d) { return l+d*w; })
+        .attr("y1", 0.0)
+        .attr("x2", function(d) { return l+d*w; })
+        .attr("y2", h);
+
+      /* Draw frame caption */
+      svg.selectAll("line.caption-frame")
+        .data(positions)
+        .enter()
+        .append("text")
+        .attr("class", "caption-frame")
+        .attr("x", function(d) { return l+d*w + 1.0; })
+        .attr("y", 12.0)
+        .text(function(d,i) { return d3.format('.1f')(i/position_steps) + 's'; });
+
+      /* Draw circle frame */
+      svg.selectAll("circle.frame")
+        .data(positions)
+        .enter()
+        .append("circle")
+        .attr("class", "frame")
+        .attr("cx", function(d) { return l+d*w; })
+        .attr("cy", t)
+        .attr("r", s);
+
+
+    </script>
+  </body> 
+</html>

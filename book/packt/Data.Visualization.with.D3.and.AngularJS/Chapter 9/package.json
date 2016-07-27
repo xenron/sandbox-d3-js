@@ -1,0 +1,10 @@
+{
+  "name": "webserver-monitor",
+  "version": "0.0.1",
+  "description": "Webserver Monitor Application",
+  "dependencies": {
+    "express": "^4.10.2",
+    "serve-static": "^1.8.1",
+    "socket.io": "^1.3.2"
+  }
+}

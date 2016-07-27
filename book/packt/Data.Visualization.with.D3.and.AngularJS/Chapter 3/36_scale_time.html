@@ -1,0 +1,28 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  </head> 
+  <body> 
+    <script type="text/javascript">
+
+      var data = [
+        new Date(2015,2,1), 
+        new Date(2015,4,1), 
+        new Date(2015,6,1)
+      ];
+
+      var domain = [
+         new Date(2015,0,1),
+         new Date(2015,11,31) 
+      ];
+
+      var scale = d3.time.scale()
+        .domain(domain)
+        .range([0,100]);
+
+      console.log(data.map(scale));
+      // [16.20, 32.95, 49.71]
+
+    </script>
+  </body> 
+</html>

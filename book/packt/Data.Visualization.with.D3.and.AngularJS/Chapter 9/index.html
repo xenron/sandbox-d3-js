@@ -1,0 +1,58 @@
+<html ng-app="myApp"> 
+  <head> 
+    <!-- Include 3rd party libraries -->
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script>
+    <script src="bower_components/angular/angular.js" charset="UTF-8"></script>
+
+    <!-- Include Socket.io -->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <!-- Include the application files -->
+    <script src="src/app.js"></script>
+    <link href="src/app.css" rel="stylesheet">
+
+    <!-- Include Bootstrap -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Include the files of the chart component -->
+    <script src="src/chart.js"></script>
+    <link href="src/chart.css" rel="stylesheet">
+
+  </head>
+  <body ng-controller="MainCtrl"> 
+
+    <div class="container">
+
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container"> 
+          <div class="navbar-text">
+            <span>Date/Time Filter:</span>
+            <span>{{ display.date[0] | date : 'dd.MM.yyyy HH:mm' }}</span> -
+            <span>{{ display.date[1] | date : 'dd.MM.yyyy HH:mm' }}</span>
+          </div>
+          <!--<div class="navbar-text">
+            <span>Cursor:</span>
+            <span>{{ display.cursor[0] | date : 'dd.MM.yyyy HH:mm' }}</span>, 
+            <span>{{ display.cursor[1] | number:2 }}</span>
+          </div>-->
+          <!--<div class="navbar-text">
+            <i>Current Date/Time: {{ time.currentDateTime | date : 'dd.MM.yyyy HH:mm' }}</i>
+          </div>-->
+          <div class="navbar-text navbar-right" style="width: 300px">
+            <brush-chart class="chart blue" brush="display.date" data="logs[0].data">
+          </div>
+        </div>
+      </nav>
+
+      <div class="row">
+        <div class="col-lg-6" ng-repeat="log in logs">
+          <h3>{{ log.name }}</h3>
+
+          <bar-chart class="chart blue" data="log.data" date="display.date" cur-date="time.currentDateTime" cursor="display.cursor">
+          </bar-chart>
+        </div>
+
+      </div>
+    </div>
+  </body> 
+</html>

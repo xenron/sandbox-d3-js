@@ -1,0 +1,17 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  </head> 
+  <body> 
+    <script type="text/javascript">
+
+      var scale = d3.scale.linear()
+        .domain([-1, 0, 1])
+        .range([0, 50, 100]);
+
+      console.log([-0.5, 0.2, 0.8].map(scale));
+      // [25, 60, 90] 
+
+    </script>
+  </body> 
+</html>

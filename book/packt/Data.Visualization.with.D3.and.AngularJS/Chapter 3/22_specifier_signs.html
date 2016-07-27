@@ -1,0 +1,19 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  </head> 
+  <body> 
+    <script type="text/javascript">
+
+      console.log(d3.format('.2f')(331.213));   // "331.21"
+      console.log(d3.format('.2f')(-331.213));  // "-331.21"
+      console.log(d3.format('+.2f')(331.213));  // "+331.21"
+      console.log(d3.format('+.2f')(-331.213)); // "-331.21"
+      console.log(d3.format('-.2f')(331.213));  // "331.21"
+      console.log(d3.format('-.2f')(-331.213)); // "-331.21"
+      console.log(d3.format(' .2f')(331.213));  // " 331.21"
+      console.log(d3.format(' .2f')(-331.213)); // "-331.21"
+
+    </script>
+  </body> 
+</html>

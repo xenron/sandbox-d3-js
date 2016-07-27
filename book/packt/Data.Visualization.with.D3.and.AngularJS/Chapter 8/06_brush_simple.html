@@ -1,0 +1,76 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+
+    <style type="text/css">
+
+    .axis path, .axis line {
+        fill: none;
+        stroke: #999;
+        shape-rendering: crispEdges;
+    }
+
+    .brush .extent {
+        stroke: rgba(255, 185, 88, 0.9);
+        fill-opacity: .125;
+        shape-rendering: crispEdges;
+    }
+
+    </style>
+
+  </head> 
+  <body>
+
+    <script type="text/javascript"> 
+      
+      var width = 800;
+      var height = 200;
+      var margin = 15;
+
+      var svg = d3.select("body")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+      var xScale = d3.scale.linear()
+        .range([margin, width-margin])
+        .domain([0, 10]);
+
+      var axis = d3.svg.axis()
+        .scale(xScale)
+        .orient('top');
+
+      var axisContainer = svg.append("g")
+        .attr("class", "axis")
+        .attr("transform", "translate(0, "+(height-margin)+")")
+        .call(axis);
+
+      var brush = d3.svg.brush()
+        .x(xScale);
+
+      var brushContainer = svg.append("g")
+        .attr("class", "brush")
+        .call(brush);
+      
+      brushContainer.selectAll("rect")
+        .attr("y", 0)
+        .attr("height", (height));
+
+      brush.on('brushend', function(){
+
+        // Use the current extent
+        xScale.domain(brush.extent());
+
+        // Redraw the axis
+        axisContainer
+          .transition()
+          .duration(250)
+          .call(axis);
+
+        // Clear the brush
+        brushContainer.call(brush.clear());
+      });
+
+    </script>
+  </body> 
+</html>

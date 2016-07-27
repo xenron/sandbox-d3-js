@@ -1,0 +1,24 @@
+<html ng-app> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+    <script src="bower_components/angular/angular.js" charset="UTF-8"></script>
+  </head> 
+  <body> 
+
+    <script type="text/javascript">
+        
+        var xhr = d3.xhr('files/access.log')
+        .get(function(error, r){
+          var data = r.responseText;
+
+          var lines = data.trim().split("\n")
+            .map(function(line){
+              return line.split(/[-"]/gi);
+            });
+
+          console.log(lines);
+        });
+
+    </script>
+  </body> 
+</html>

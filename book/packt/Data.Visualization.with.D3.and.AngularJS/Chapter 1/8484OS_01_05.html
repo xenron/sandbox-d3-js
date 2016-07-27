@@ -1,0 +1,43 @@
+<!doctype HTML>
+<html>
+<body>
+
+<canvas id="vis" width="640" height="480"></canvas>
+
+<script type="text/javascript">
+
+  function PixelGraphic(parent, tag, attrs) {
+
+    var el = parent.getContext('2d');
+    el.beginPath();
+    el.strokeStyle = "#fff";
+    el.fillStyle = "#fff";
+
+    var obj = {
+      
+      stroke: function (color){
+        el.strokeStyle = color;
+      },
+
+      fill: function (color){
+        el.fillStyle = color;
+      },
+      
+      draw: function () {
+        el.arc(attrs.cx, attrs.cy, attrs.r, 0, 2*Math.PI);
+        el.stroke();
+        el.fill();
+      }
+    }
+
+    return obj;
+  }
+
+
+  var ctx = document.getElementById('vis');
+  var circle = PixelGraphic(ctx, 'circle', {cx:25, cy:25, r:20});
+  circle.fill('red');
+  circle.draw();
+</script>
+</body>
+</html>

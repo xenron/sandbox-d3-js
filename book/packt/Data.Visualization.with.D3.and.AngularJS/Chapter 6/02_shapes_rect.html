@@ -1,0 +1,32 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  
+    <style type="text/css">
+    rect {
+      stroke: steelblue;
+      stroke-width: 2;
+      fill: steelblue;
+      fill-opacity: 0.3;
+    }
+    </style>
+
+  </head> 
+  <body>
+
+    <script type="text/javascript"> 
+      
+      var svg = d3.select("body").append("svg")
+        .attr("width", 400)
+        .attr("height", 400);
+
+      var rect = svg.append("rect")
+        .attr("x", 10)
+        .attr("y", 110)
+        .attr("width", 380)
+        .attr("height", 180)
+        .attr("rx", 50);
+
+    </script>
+  </body> 
+</html>

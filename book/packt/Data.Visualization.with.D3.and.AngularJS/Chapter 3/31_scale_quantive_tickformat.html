@@ -1,0 +1,19 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  </head> 
+  <body> 
+    <script type="text/javascript">
+
+      var scale = d3.scale.linear()
+        .domain([0, 1])
+        .range([0, 100]);
+      
+      var ticks_formatter = scale.tickFormat(5, "%");
+
+      console.log(scale.ticks(5).map(ticks_formatter));
+      // ["0%", "20%", "40%", "60%", "80%", "100%"] 
+
+    </script>
+  </body> 
+</html>

@@ -1,0 +1,24 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  </head> 
+  <body> 
+    <script type="text/javascript">
+
+      console.log(d3.format('e')(0.3123)); // "3.123e-1"
+      console.log(d3.format('g')(31.223e3)); // "31223"
+      console.log(d3.format('f')(31.23)); // "31"
+      console.log(d3.format('d')(124)); // "124"
+      console.log(d3.format('r')(31.53)); // "31.53"
+      console.log(d3.format('%')(0.23)); // "23%"
+      console.log(d3.format('p')(0.2314)); // "23.14%"
+      console.log(d3.format('b')(23)); // "10111"
+      console.log(d3.format('o')(32)); // "40"
+      console.log(d3.format('x')(59)); // "3b"
+      console.log(d3.format('X')(63)); // "3F"
+      console.log(d3.format('c')(81)); // "Q"
+      console.log(d3.format('s')(31.223e3)); // "31.223k"
+
+    </script>
+  </body> 
+</html>

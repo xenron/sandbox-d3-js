@@ -1,0 +1,49 @@
+<!doctype HTML>
+<html>
+<body>
+
+<svg id="vis" width="640" height="480">
+
+<script type="text/javascript">
+
+  function VectorGraphic(parent, tag, attrs) {
+
+    var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    
+    for (var k in attrs)
+            el.setAttribute(k, attrs[k]);
+
+    var obj = {
+      
+      on: function(e, handler) {
+      	el.addEventListener(e, function(){
+      		handler.call(obj, e);
+      	});
+      },
+
+      stroke: function (color){
+        el.setAttribute("stroke", color);
+      },
+
+      fill: function (color){
+        el.setAttribute("fill", color);
+      },
+      
+      draw: function () {
+        parent.appendChild(el);
+      }
+    }
+
+    return obj;
+  }
+
+  var ctx = document.getElementById('vis');
+  var circle = VectorGraphic(ctx, 'circle', {cx:25, cy:25, r:20});
+  circle.fill('red');
+  circle.on('mouseover', function() {
+    this.stroke('blue'); 
+  });
+  circle.draw();
+</script>
+</body>
+</html>

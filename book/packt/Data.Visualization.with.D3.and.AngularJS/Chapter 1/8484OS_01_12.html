@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <script src="libs/protovis.min.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // Define the dataset
+      var data = [15, 25, 35];
+      // Define the canvas
+      var vis = new pv.Panel() 
+        .width(50) 
+        .height(30);
+      // Define the circles and their color
+      vis.add(pv.Dot)
+        .data(data)
+        .left(function(d) { return d; })
+        .bottom(15)
+        .radius(5)
+        .fillStyle('red');
+      // Draw the canvas and the circles
+      vis.render();
+    </script>
+  </body>
+</html>

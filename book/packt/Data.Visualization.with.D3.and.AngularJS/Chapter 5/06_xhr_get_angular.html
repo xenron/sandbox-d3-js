@@ -1,0 +1,28 @@
+<html ng-app="myApp"> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+    <script src="bower_components/angular/angular.js" charset="UTF-8"></script>
+
+    <script>
+
+      // Application Module 
+      angular.module('myApp', [])
+
+      // Main application controller
+      .controller('MainCtrl', ["$scope", "$http",
+        function ($scope, $http) {
+          
+          var url = "files/access.log";
+          $http.get(url)
+            .then(function(response){
+    
+              console.log(response.data);
+          });
+      }]);
+
+    </script>
+  </head> 
+  <body ng-controller="MainCtrl"> 
+
+  </body> 
+</html>

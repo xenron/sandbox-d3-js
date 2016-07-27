@@ -1,0 +1,19 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  </head> 
+  <body> 
+	<svg width="400" height="200">
+	  <circle cx="50" cy="50" r="40" />
+	  <circle cx="150" cy="50" r="40" />
+	</svg>
+
+	<script type="text/javascript">
+	  // Get a Selection of the circles
+	  var circles = d3.selectAll('circle');
+
+	  console.log(circles);
+	  // [[<circle />, <circle />]]
+	</script>
+  </body> 
+</html>

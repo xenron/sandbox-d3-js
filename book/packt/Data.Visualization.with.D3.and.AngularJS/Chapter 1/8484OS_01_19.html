@@ -1,0 +1,61 @@
+<html ng-app="myApp">
+  <head>
+  
+    <script src="libs/angular.min.js"></script>
+
+    <script type="text/javascript">
+
+      var app = angular.module('myApp', []);
+
+      app.directive('d3Map', function(){
+        return {
+          restrict: 'E',
+          template: 'D3 Map'
+        }
+      });
+
+      app.directive('d3LineChart', function(){
+        return {
+          restrict: 'E',
+          scope: {
+            data: '@'
+          },
+          template: 'D3 Line Chart'
+        }
+      });
+
+      app.directive('d3ScatterPlot', function(){
+        return {
+          restrict: 'E',
+          scope: {
+            data: '@'
+          },
+          template: 'D3 Scatter Plot'
+        }
+      });
+
+      app.directive('d3ChordDiagram', function(){
+        return {
+          restrict: 'E',
+          scope: {
+            data: '@'
+          },
+          template: 'D3 Chord Diagram'
+        }
+      });
+
+      app.controller('MainCtrl', ['$scope', 
+        function($scope) {    
+
+          $scope.data = [1,2,3];
+        }
+      ]);
+  	</script>
+  </head>
+  <body ng-controller="MainCtrl">  
+    <d3-map></d3-map>
+    <d3-line-chart data="data"></d3-line-chart>
+    <d3-scatter-plot data="data"></d3-scatter-plot>
+    <d3-chord-diagram data="data"></d3-chord-diagram>
+  </body>
+</html>

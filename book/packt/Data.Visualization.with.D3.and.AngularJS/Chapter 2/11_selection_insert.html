@@ -1,0 +1,15 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  </head> 
+  <body> 
+	<p class="first">Apple, Banana and Orange</p>
+	<p class="second">Kiwi, Grapes and Pineapple</p>
+
+	<script type="text/javascript">
+	  // Insert a p element
+	  d3.select('body')
+	    .insert('p', '.first').text('I like fruits.');
+	</script>
+  </body> 
+</html>

@@ -1,0 +1,20 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  </head> 
+  <body> 
+    <script type="text/javascript">
+
+      var scale = d3.scale.ordinal()
+        .domain(["A", "B", "C", "D", "E", "F"])
+        .rangeBands([0, 100]);
+
+      console.log(scale.range());
+      // [0, 16.66, 33.33, 50, 66.66, 83.33] 
+
+      console.log(["A", "B", "C"].map(scale));
+      // [0, 16.66, 33.33]
+
+    </script>
+  </body> 
+</html>

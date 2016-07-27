@@ -1,0 +1,79 @@
+<html> 
+  <head> 
+    <script src="bower_components/d3/d3.js" charset="UTF-8"></script> 
+  
+    <style type="text/css">
+    path {
+      stroke-width: 2;
+      fill: none;
+    }
+
+    circle {
+      stroke: none
+    }
+    </style>
+
+  </head> 
+  <body>
+
+    <script type="text/javascript"> 
+      
+      var svg = d3.select("body").append("svg")
+        .attr("width", 800)
+        .attr("height", 400);
+
+      var line1 = svg.append("path")
+        .style("stroke", 'steelblue')
+        .attr("d", 'M15,15  L100,100 300,100 400,15');
+
+      var hline1 = svg.append("path")
+        .style("stroke", 'red')
+        .attr("d", 'M15,5  H400');
+
+      var hline2 = svg.append("path")
+        .style("stroke", 'red')
+        .attr("d", 'M15,110  H400');
+
+      var vline1 = svg.append("path")
+        .style("stroke", 'green')
+        .attr("d", 'M5,5 V110');
+
+      var vline2 = svg.append("path")
+        .style("stroke", 'green')
+        .attr("d", 'M410,5  V110');
+
+      var g = svg.append("g");
+
+      g.selectAll("circle.vline")
+        .data([[5,5], [5,110], [410, 5], [410, 110]])
+        .enter()
+        .append("circle")
+        .attr("class", 'vline')
+        .style("fill", 'green')
+        .attr("cx", function(d) {return d[0]; })
+        .attr("cy", function(d) {return d[1]; })
+        .attr("r", 3);
+
+      g.selectAll("circle.line")
+        .data([[15,15], [100,100], [300,100], [400,15]])
+        .enter()
+        .append("circle")
+        .attr("class", 'line')
+        .style("fill", 'steelblue')
+        .attr("cx", function(d) {return d[0]; })
+        .attr("cy", function(d) {return d[1]; })
+        .attr("r", 3);
+
+      g.selectAll("circle.hline")
+        .data([[15,5], [400,5], [15, 110], [400, 110]])
+        .enter()
+        .append("circle")
+        .attr("class", 'hline')
+        .style("fill", 'red')
+        .attr("cx", function(d) {return d[0]; })
+        .attr("cy", function(d) {return d[1]; })
+        .attr("r", 3);
+
+    </script>
+  </body> 
+</html>
